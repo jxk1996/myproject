@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jxk.userservice.mapper.UserMapper">
+    <resultMap id="userMap" type="com.jxk.userservice.entity.User">
+        <id column="id" property="id" javaType="Long"></id>
+        <result column="name" property="name" javaType="String"></result>
+        <result column="age" property="age" javaType="Integer"></result>
+        <result column="email" property="email" javaType="String"></result>
+        <result column="gmt_create" property="gmtCreate" javaType="Date"></result>
+        <result column="gmt_modified" property="gmtModified" javaType="Date"></result>
+    </resultMap>
+
+<select id="selectById" resultMap="userMap">
+    select  * from user
+    <where>
+        <if test="id!=null">
+            id=#{id}
+        </if>
+    </where>
+</select>
+
+
+</mapper>
